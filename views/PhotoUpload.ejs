@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Photo Upload</title>
+
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+	#ui{
+		background-color: #C0C0C0;
+		padding:30px;
+		margin-top: 20px;
+		border-radius: 10px;
+	}
+
+	#ui label, h1 {
+		color: #fff;
+	}
+</style>
+
+		
+
+</head>
+
+<body>
+	<%- include('./partials/navbar.ejs') %>
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-lrg-3"></div>
+			<div class="col-lrg-6">
+				<div id="ui">
+					<h1 class="text-center">Photo Upload</h1>
+					<br>
+					<form class="form-group">
+
+						<br>
+						<div class="row">
+							<div class="col-lg-6">
+								<label>Food item:</label>
+								<input type="text" id="name" name="name" class="form-control" placeholder="Enter food item">
+							</div>
+
+							<div class="col-lg-6">
+								<label>Price:</label>
+								<input type="text" id="price" name="price" class="form-control" placeholder="Enter food item price">
+							</div>
+							
+						</div>
+						<br>
+						<label>Description</label>
+						<input type="text" id="description" name="description" class="form-control" placeholder="Enter description">
+						<br>
+						<input type="file" id="imageLink" />
+						<br>
+						<br>
+
+						<input type="submit" name="submit" value="submit" class="btn btn-primary btn-block btn-lg">
+
+						
+					</form>
+					
+
+				</div>
+			</div>
+			<div class="col-lrg-3"></div>
+			
+		</div>
+		
+	</div>
+
+</body>
+
+
+</html>

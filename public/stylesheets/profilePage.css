@@ -1,0 +1,81 @@
+body, html {
+  height: 100%;
+}
+.checked {
+            color: orange;
+         }
+.complex_form {
+    font-size:20px;
+    font-weight:bold;
+    margin:-20px -10px 20px -10px;
+    padding:10px 0px 10px 25px;
+    color:white;
+    background-color: #3C3D3F;
+    border-radius: 7px 7px 0px 0px;
+}
+.bg {
+  /* The image used */
+  background-color: #659EC7;
+
+  /* Full height */
+  height: 50%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.restaurantInfo {
+    margin-bottom: 2%;
+}
+
+.restaurantInfoTitle {
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.restCard{
+  display: inline-block; 
+  width: 45%; 
+  margin: 0.5% 2% 0.5% 2%; 
+  border: #999999 solid 0.5px; 
+  border-radius: 5px;
+}
+
+.restCardImg{
+  height: 30%; 
+  width: 100%; 
+  object-fit: cover; 
+  margin-bottom: 2%;
+}
+
+.restCardText {
+  padding: 1% 2% 1% 2%;
+  color: #636363;
+  overflow-x: hidden;
+  height: 3em;
+}
+
+.scrollable {
+  width: 100%; 
+  height:45%; 
+  overflow-x: scroll; 
+  overflow-x: auto; 
+  overflow-y: hidden; 
+  white-space: nowrap; 
+  margin: 2% 0% 2% 0%
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+.scrollable::-webkit-scrollbar-track {
+  background: #e3e8eb;        /* color of the tracking area */
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: rgb(168, 170, 179);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #e3e8eb;  /* creates padding around scroll thumb */
+}

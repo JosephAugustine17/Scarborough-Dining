@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title><%= restaurant.nameSpaced %></title>
+        <!-- JS, Popper.js, and jQuery (Bootstrap files) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="/stylesheets/profilePage.css">
+    </head>
+
+    <body>
+    <%- include('./partials/navbar.ejs') %>
+    <div style="width:100%;" >
+        <div class = "container d-flex flex-column justify-content-start">
+            <br><br>
+            <h1 class="display-10 text-center" style="margin-bottom: 1%;"> <%= restaurant.nameSpaced %> </h1>
+            <h4 class="display-10 text-center" style="margin-bottom: 3%; font-weight: 350;"> 
+                <% if (restaurant.reviews.length === 0) { %>
+                    No Ratings Yet
+                <% } else { %> 
+                    Rating: <%= restaurant.rating %>/5 (<%= restaurant.reviews.length %> Reviews)
+                <% } %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;  Pricing: <%= restaurant.pricing %>/4
+                <% if (!user) { %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a class="btn btn-outline-primary disabled" href="/<%=restaurant._id%>/menu?p=1" role="button">Order Now</a>
+                <% } else if(user.customerEmail) { %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a class="btn btn-outline-primary" href="/<%=restaurant._id%>/menu?p=1" role="button">Order Now</a>
+                <% } else if(user._id == restaurant._id) { %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a class="btn btn-outline-primary" href="/<%=restaurant._id%>/menu?p=1" role="button">Edit Menu</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <a class="btn btn-primary" href="/<%=restaurant._id%>/analytics" role="button">Analytical Dashboard</a>
+                <% } %>
+            </h4>
+            <div class =" d-flex flex-row align-items-start justify-content-around ">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="data:image/<%=restaurant.image.contentType%>;base64, <%=restaurant.image.data?restaurant.image.data.toString('base64'):""%>" alt="Card image cap" style="height:8em; object-fit: cover;">
+                    <div class="card-body">
+                        <div class="restaurantInfo restaurantInfoTitle">Phone Number</div>
+                        <div class="restaurantInfo" class="card-text restaurantInfo"><%= restaurant.phoneNumber %></div>
+                        <div class="restaurantInfo restaurantInfoTitle">Restaurant Address</div>
+                        <div class="restaurantInfo" class="card-text restaurantInfo"><%= restaurant.address %> </div>
+                        <div class="restaurantInfo restaurantInfoTitle"> Restaurant Owner </div>
+                        <div class="restaurantInfo" class="card-text restaurantInfo"><%= restaurant.title %> <%= restaurant.ownerFirstName %> <%= restaurant.ownerLastName %></div>
+                        <br>
+                        <% if(user && user._id == restaurant._id) { %>
+                        <a class="btn btn-outline-primary btn-sm" href="/restaurantSignup/" role="button">Edit Profile</a>
+                        <% } %>
+                        <a class="btn btn-outline-primary btn-sm" href="/<%=restaurant._id%>/reviews?p=1" role="button">Reviews</a>
+                    </div>
+                </div>
+                <div class = "d-flex flex-column" style="width: 70%;">
+                    <div class = "d-flex flex-row align-items-center justify-content-between" style=" padding: 0% 0 1% 0; border-bottom: black solid 0.5px;">
+                        <h3> Posts </h3>
+                        <a class="btn btn-outline-success <%=user&&user._id==restaurant._id?"":"d-none"%>" href="/<%=restaurant._id%>/storyUploader" role="button">Add New </a>
+                    </div>
+                    <div class="scrollable">
+                        <% for(i = 0; i < restaurant.stories.length; i++) { %>
+                            <div class="restCard">
+                                    <img class="card-img-top" src="data:image/<%=restaurant.stories[i].image.contentType%>;base64, <%=restaurant.stories[i].image.data?restaurant.stories[i].image.data.toString('base64'):""%>" alt="Card image cap" style="height:8em; object-fit: cover;">
+                                    <div class="restCardText">
+                                        <p class="card-text"><%=restaurant.stories[i].text%></p>
+                                    </div> 
+                            </div>   
+                        <% } %>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- CSS only for bootstrap-->
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </body>
+</html>
